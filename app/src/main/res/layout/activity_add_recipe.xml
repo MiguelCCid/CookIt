@@ -1,0 +1,87 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/editNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nombre de la receta"
+        android:textSize="18sp"
+        android:layout_marginBottom="16dp"/>
+
+
+    <EditText
+        android:id="@+id/editTiempo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Tiempo total de la receta (minutos)"
+        android:inputType="number"
+        android:textSize="18sp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="24dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Categoría"
+        android:textSize="18sp"
+        android:layout_marginTop="24dp"/>
+
+    <Spinner
+        android:id="@+id/spinnerCategorias"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ingredientes:"
+        android:textSize="18sp"
+        android:layout_marginTop="24dp"/>
+
+    <LinearLayout
+        android:id="@+id/containerIngredientes"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/btnAñadirIngrediente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Añadir ingrediente"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Pasos:"
+        android:textSize="18sp"
+        android:layout_marginTop="24dp"/>
+
+    <LinearLayout
+        android:id="@+id/containerPasos"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/btnAñadirPaso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Añadir paso"
+        android:layout_marginTop="16dp"/>
+
+    <Button
+        android:id="@+id/btnGuardar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Guardar receta"
+        android:textSize="18sp"/>
+
+</LinearLayout>
