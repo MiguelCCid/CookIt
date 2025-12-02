@@ -3,8 +3,11 @@ package com.example.cookit;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class RecipeDetailActivity extends AppCompatActivity {
 
     TextView tvNombre, tvIngredientes, tvPasos, tvTiempo, tvCategoria;
+    ImageView imgReceta;
     Button btnEditar, btnEliminar;
     DataBaseHelper dbHelper;
 
@@ -30,6 +34,7 @@ public class RecipeDetailActivity extends AppCompatActivity {
         tvPasos = findViewById(R.id.tvPasos);
         tvTiempo = findViewById(R.id.tvTiempo);
         tvCategoria = findViewById(R.id.tvCategoria);
+        imgReceta = findViewById(R.id.imgReceta);
         btnEditar = findViewById(R.id.btnEditar);
         btnEliminar = findViewById(R.id.btnEliminar);
 
@@ -55,7 +60,7 @@ public class RecipeDetailActivity extends AppCompatActivity {
     private void mostrarReceta() {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         Cursor cursor = db.rawQuery(
-                "SELECT nombre, ingredientes, pasos, tiempo, categoria FROM " + DataBaseHelper.TABLE_RECETAS + " WHERE id=?",
+                "SELECT nombre, ingredientes, pasos, tiempo, categoria, imagen FROM " + DataBaseHelper.TABLE_RECETAS + " WHERE id=?",
                 new String[]{String.valueOf(idReceta)}
         );
 
@@ -65,12 +70,21 @@ public class RecipeDetailActivity extends AppCompatActivity {
             String pasos = cursor.getString(2);
             int tiempo = cursor.getInt(3);
             String categoria = cursor.getString(4);
+            String imagenPath = cursor.getString(5);
 
             tvNombre.setText(nombre);
             tvIngredientes.setText("Ingredientes:\n" + ingredientes);
             tvPasos.setText("Pasos:\n" + pasos);
             tvTiempo.setText("Tiempo: " + tiempo + " min");
             tvCategoria.setText("Categoría: " + categoria);
+
+            if (imagenPath != null && !imagenPath.isEmpty()) {
+                Bitmap bmp = BitmapFactory.decodeFile(imagenPath);
+                if (bmp != null) imgReceta.setImageBitmap(bmp);
+                else imgReceta.setImageResource(R.drawable.placeholder_receta);
+            } else {
+                imgReceta.setImageResource(R.drawable.placeholder_receta);
+            }
         }
         cursor.close();
     }
@@ -80,7 +94,7 @@ public class RecipeDetailActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == REQUEST_EDIT && resultCode == RESULT_OK){
             mostrarReceta();
-            Toast.makeText(this, "Receta actualizada con éxito", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Receta actualizada", Toast.LENGTH_SHORT).show();
         }
     }
 

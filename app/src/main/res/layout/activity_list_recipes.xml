@@ -12,21 +12,28 @@
         <SearchView
             android:id="@+id/searchViewRecetas"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:queryHint="Buscar recetas..." />
+            android:layout_height="45dp"
+            android:background="@drawable/bg_search"
+            android:queryHint="Buscar recetas..."
+            android:elevation="4dp"
+            android:iconifiedByDefault="false" />
 
         <Spinner
             android:id="@+id/spinnerOrden"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp" />
+            android:layout_height="45dp"
+            android:background="@drawable/bg_spinner"
+            android:layout_marginTop="12dp"
+            android:padding="8dp" />
 
         <ListView
             android:id="@+id/listViewRecetas"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:layout_marginTop="10dp" />
+            android:layout_marginTop="16dp"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="12dp" />
 
     </LinearLayout>
 
@@ -40,6 +47,6 @@
         android:text="+"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
-        android:elevation="8dp" />
+        android:elevation="10dp" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

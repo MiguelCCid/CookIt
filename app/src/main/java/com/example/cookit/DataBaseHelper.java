@@ -11,7 +11,7 @@
     public class DataBaseHelper extends SQLiteOpenHelper {
 
         private static final String DATABASE_NAME = "cookit.db";
-        private static final int DATABASE_VERSION = 1;
+        private static final int DATABASE_VERSION = 2;
 
         public static final String TABLE_RECETAS = "recetas";
 
@@ -21,7 +21,8 @@
         public static final String COLUMN_TIEMPO = "tiempo";
         public static final String COLUMN_PASOS = "pasos";
 
-        public static final String COLUMN_CATEGORIA = "categoria"; // por ejemplo
+        public static final String COLUMN_CATEGORIA = "categoria";
+        public static final String COLUMN_IMAGEN = "imagen";
 
 
         public static final String TABLE_CATEGORIAS = "categorias";
@@ -41,7 +42,8 @@
                     COLUMN_INGREDIENTES + " TEXT, " +
                     COLUMN_TIEMPO + " INTEGER, " +
                     COLUMN_PASOS + " TEXT, " +
-                    COLUMN_CATEGORIA + " TEXT)";
+                    COLUMN_CATEGORIA + " TEXT, " +
+                    COLUMN_IMAGEN + " TEXT)";
 
             String createTableCategorias = "CREATE TABLE " + TABLE_CATEGORIAS + " (" +
                     COLUMN_CAT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
