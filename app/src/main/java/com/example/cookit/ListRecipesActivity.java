@@ -153,16 +153,30 @@ public class ListRecipesActivity extends AppCompatActivity {
                 listaRecetasFiltrada.sort((a, b) -> b.nombre.toLowerCase().compareTo(a.nombre.toLowerCase()));
                 break;
             case 4:
-                listaRecetasFiltrada.removeIf(r -> r.categoria.equalsIgnoreCase("Sin categoría"));
-                listaRecetasFiltrada.sort(Comparator.comparing(a -> a.categoria.toLowerCase()));
+                listaRecetasFiltrada.sort((a, b) -> {
+                    if (a.categoria.equalsIgnoreCase("Sin categoría") && !b.categoria.equalsIgnoreCase("Sin categoría"))
+                        return 1;
+                    if (!a.categoria.equalsIgnoreCase("Sin categoría") && b.categoria.equalsIgnoreCase("Sin categoría"))
+                        return -1;
+                    return a.categoria.toLowerCase().compareTo(b.categoria.toLowerCase());
+                });
                 break;
+
             case 5:
-                listaRecetasFiltrada.removeIf(r -> r.categoria.equalsIgnoreCase("Sin categoría"));
-                listaRecetasFiltrada.sort((a, b) -> b.categoria.toLowerCase().compareTo(a.categoria.toLowerCase()));
+                listaRecetasFiltrada.sort((a, b) -> {
+                    if (a.categoria.equalsIgnoreCase("Sin categoría") && !b.categoria.equalsIgnoreCase("Sin categoría"))
+                        return 1;
+                    if (!a.categoria.equalsIgnoreCase("Sin categoría") && b.categoria.equalsIgnoreCase("Sin categoría"))
+                        return -1;
+                    return b.categoria.toLowerCase().compareTo(a.categoria.toLowerCase());
+                });
                 break;
+
         }
         adapter.notifyDataSetChanged();
     }
+
+
 
     class RecetaAdapter extends BaseAdapter {
         @Override public int getCount() { return listaRecetasFiltrada.size(); }

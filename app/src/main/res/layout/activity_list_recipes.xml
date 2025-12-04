@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:background="@drawable/bg_search"
-            android:queryHint="Buscar recetas..."
+            android:queryHint="Buscar por nombre o categoría..."
             android:elevation="4dp"
             android:iconifiedByDefault="false" />
 
